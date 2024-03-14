@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Registrazione</title>
+  </head>
+  <body>
+
+    <h2>Accesso</h2>
+    <p>Registrati, Accedi e Salva</p>
+    <!-- <button style="align-items: center;justify-content: center; margin-left: 45%;
+    background-color: rgb(47, 184, 184);"  onclick="openCity(event, 'Registrazione')">ENTRA NELLA PAGINA</button> -->
+
+    <div class="tab" >
+        
+      <button class="tablinks" onclick="openCity(event, 'Registrazione')" style="background-color: bisque;">REGISTRAZIONE</button>
+      <button class="tablinks" id="loginTab" disabled style="background-color: rgb(244, 218, 239)">LOGIN</button>
+      <button class="tablinks" id="riepilogoTab" disabled style="background-color: rgb(199, 216, 165)">RIEPILOGO</button>
+    </div>
+    
+    <div id="Registrazione" class="tabcontent" style="background-color: bisque">
+      <h3>Registrazione</h3>
+      <label for="nickname" id="nicknameLabel">Nickname:</label>
+      <input type="text" id="nickname" />
+    
+      <label for="password" id="passwordLabel">Password:</label>
+      <input type="password" id="password" />
+    
+      <button onclick="salvaDati()" style="background-color: rgb(179, 242, 221)">Procedi</button><br>
+      <h4>Sei gia loggato?</h4><br>
+      <button onclick="salvaDati2()" style="background-color: rgb(179, 242, 221)" >Accedi</button>
+    </div>
+    
+    <div id="Login" class="tabcontent" style="background-color: rgb(244, 218, 239)">
+        <i class="fa fa-reply" aria-hidden="true" style="margin-right: 100%;" onclick="TornaIndietroLogin()"></i>
+        
+      <h3>Login</h3>
+      <h5>Prego inserire le credenziali per l'accesso:</h5>
+    
+      <label for="nickname" id="nicknameL">Nickname:</label>
+      <input type="text" id="nicknameLogin" />
+    
+      <label for="password" id="passwordl">Password:</label>
+      <input type="password" id="passwordLogin" />
+    
+      <button id="loginButton" onclick="verifica()" style="background-color: aquamarine">Avanti</button>
+      
+    </div>
+    
+    <div id="Riepilogo" class="tabcontent" style="background-color: rgb(199, 216, 165)">
+        <i class="fa fa-sign-out" aria-hidden="true" onclick="TornaIndietroFinoARegistrazione()" style="margin-left: 100%;" id="freccia"></i>
+      <h3>Riepilogo</h3>
+      <button onclick="stampaDatiInCard()" style="background-color: aquamarine">Stampa i dati</button>
+      <div id="cardContainer"></div>
+    </div>
+    
+    <script>
+    var accessoEffettuato = false;
+    
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    
+    function salvaDati() {
+      var nicknameReg = document.getElementById("nickname").value.trim();
+      var passwordReg = document.getElementById("password").value.trim();
+    
+      if (nicknameReg !== "" && passwordReg !== "") {
+        sessionStorage.setItem("nickname", nicknameReg);
+        sessionStorage.setItem("password", passwordReg);
+    
+        openCity(window.event, "Login");
+      } else {
+        alert("Per favore, compilare entrambi i campi.");
+      }
+    }
+    function salvaDati2(){
+        openCity(window.event, "Login");
+    }
+    function TornaIndietroLogin(){
+        openCity(window.event, "Registrazione");
+    }
+    function TornaIndietroFinoARegistrazione(){
+        openCity(window.event, "Registrazione");
+    }
+    
+    function verifica() {
+      var nicknameLogInput = document.getElementById("nicknameLogin");
+      var passwordLogInput = document.getElementById("passwordLogin");
+    
+      if (nicknameLogInput && passwordLogInput) {
+        var nicknameLog = nicknameLogInput.value.trim();
+        var passwordLog = passwordLogInput.value.trim();
+    
+        var savedNickname = sessionStorage.getItem("nickname");
+        var savedPassword = sessionStorage.getItem("password");
+    
+        if (savedNickname !== null && savedPassword !== null) {
+          if (nicknameLog === savedNickname && passwordLog === savedPassword) {
+            alert("Accesso effettuato con successo!");
+            accessoEffettuato = true;
+            openCity(window.event, "Riepilogo");
+          } else {
+            alert("Nickname o password non corretti. Riprova.");
+          }
+        } else {
+          alert("Errore: i dati di registrazione non sono stati trovati.");
+        }
+      } else {
+        alert("Errore: impossibile trovare i campi di input del nickname e della password.");
+      }
+    }
+    
+    function stampaDatiInCard() {
+      var savedNickname = sessionStorage.getItem("nickname");
+      var savedPassword = sessionStorage.getItem("password");
+    
+      console.log("nickname: ", savedNickname);
+      console.log("password: ", savedPassword);
+    
+      var cardContainer = document.getElementById("cardContainer");
+      cardContainer.innerHTML = ""; 
+    
+      var card = document.createElement("div");
+      card.classList.add("card");
+    
+      var nicknamePara = document.createElement("p");
+      nicknamePara.textContent = "Nickname: " + savedNickname;
+      card.appendChild(nicknamePara);
+    
+      var passwordPara = document.createElement("p");
+      passwordPara.textContent = "Password: " + savedPassword;
+      card.appendChild(passwordPara);
+    
+      cardContainer.appendChild(card);
+    }
+    </script>
+    </body>
+    </html>

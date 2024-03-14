@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+  }
+
+  p {
+    text-align: center;
+    color: #666;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .tab button {
+    background-color: #f2f2f2;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: 0.3s;
+    font-size: 16px;
+    border-radius: 10px 10px 0 0;
+    /* display: none; */
+  }
+
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  .fa{
+    cursor: pointer;
+  }
+  #freccia{
+    
+        transform: scaleX(-1); /* Specchia l'icona lungo l'asse X */
+    
+  }
+  .tablinks{
+    /* display: none; */
+  }
