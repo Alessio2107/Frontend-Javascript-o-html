@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Benvenuto</h1>
+    <p>Ciao, <span id="span1"></span></p>
+<button onclick="login()">Login</button>
+<button onclick="tolgo()">Togli</button>
+
+    
+
+    <script>
+        let nome="Alessio";
+        let span1=document.getElementById("span1");
+
+        function login(){
+            if(span1!==null){
+        nome="Alessio"; 
+        
+        document.getElementById("span1").innerHTML=nome;
+            }else{
+
+            }
+        };
+
+
+        var giorni=["lunedi","martedi"];
+        function tolgo(){
+            giorni.push("mercoledi");
+            giorni.unshift("domenica")
+            giorni.shift();
+            console.log(giorni);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+	
+</head>
+<body>
+  
+<input type="button" onclick="getLocation()" value="Premi">
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+<div id="cityList"></div>
+<button onclick="getCityImage()">Mostra Immagine </button>
+
+<script>
+  
+var cities = [
+  { name: "Roma", coordinates: [41.9028, 12.4964], img: "/mappa1/assets/20220127150143-colosseo-roma-lazio-shutterstock-756032350.jpg" },
+  { name: "Milano", coordinates: [45.4642, 9.1900], img: "https://www.italia.it/it/lombardia/milano/guida-storia-curiosita" },
+  { name: "Firenze", coordinates: [43.7696, 11.2558], img: "" },
+  {  name: "Napoli", coordinates: [40.8518, 14.2681], img: "" },
+  { name: "Ameglio", coordinates: [41.1905, 14.0253], img: "" }
+];
+
+var mymap = L.map('mapid').setView([41.9028, 12.4964], 5);
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  var latLng = [position.coords.latitude, position.coords.longitude];
+  addMarkerAndPopup("Posizione attuale", latLng);
+  mymap.setView(latLng, 13);
+}
+
+function addMarkerAndPopup(cityName, coordinates) {
+  var marker = L.marker(coordinates).addTo(mymap)
+    .bindPopup("<b>" + cityName + "</b><br /><img src='" + getCityImage(cityName) + "' alt='" + cityName + "' width='150'>").openPopup();
+}
+
+function getCityImage(cityName) {
+  for (var i = 0; i < cities.length; i++) {
+    if (cities[i].name === cityName) {
+      return cities[i].img;
+    }
+  }
+  return "";
+}
+
+cities.forEach(function(city) {
+  var listItem = document.createElement("div");
+   src= getCityImage(city.name);
+
+  listItem.innerHTML = "<a href='#' onclick='centerMap([" + city.coordinates + "])'>" 
+    + city.name + "</a><br> <img src='" + src + "' width= 100px; heigth=100px></img>";
+  
+  document.getElementById("cityList").appendChild(listItem);
+});
+
+function centerMap(coordinates) {
+  mymap.setView(coordinates, 13);
+}
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mymap);SVGDescElement
+</script>
+</body>
+</html>

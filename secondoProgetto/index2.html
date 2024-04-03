@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Colore Selezionato</h1>
+        <select id="colori">
+            <option value="red">Rosso</option>
+            <option value="green">Verde</option>
+            <option value="blue">Blu</option>
+            <option value="yellow">Giallo</option>
+            <option value="orange">Arancione</option>
+        </select>
+        <div id="coloreQuadrato" style="margin: 7px; width: 150px; height: 150px;">
+            
+        </div>
+    </div>
+
+    <script>       
+        var coloreSelezionato = localStorage.getItem("coloreSelezionato"); 
+        console.log(coloreSelezionato)
+        document.getElementById("colori").value = coloreSelezionato;        
+        document.getElementById("coloreQuadrato").style.backgroundColor = coloreSelezionato;
+    </script>
+</body>
+</html>

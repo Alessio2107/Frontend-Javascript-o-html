@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JQuery</h1>
+    <h2>Introduzione a jquery</h2>
+
+    <ul class="lista">
+      <li class="lined">Pasta</li>
+      <li>Pane</li>
+      <li>
+        Bevande
+        <ul class="sotto-lista">
+          <li>Acqua</li>
+          <li>Vino</li>
+          <li>Coca Cola</li>
+        </ul>
+      </li>
+      <li>Uova</li>
+      <li>Pomodoro</li>
+      <li>Insalata</li>
+    </ul>
+    <script>
+      $(document).ready(function () {
+        $("li").css({ color: "black" });
+        $("li").on("click", function () {
+            
+          if ($(this).has("ul").length===0 || $(this).children().children().length===0)  {
+            console.log($(this).children());
+            console.log($(this).children().children());
+            $(this).addClass("lined");
+
+            if ($(this).parent().is(".sotto-lista")) {
+              $(this).remove();
+            }
+          }else {
+            
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

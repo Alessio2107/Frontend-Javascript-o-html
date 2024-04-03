@@ -1,0 +1,93 @@
+<!-- [09:40] Simona Longobardi
+Dato un json con le seguenti proprietà: name, surrname, age, aggiungere l'attributo city se l'età della persone è maggiore di 18. 
+
+Per ogni persona inferiore ai 18 anni, estrarre invece, l'iniziale del nome 
+
+
+
+Creare una combobox popolata dinamicamente con 
+una lista di colori. Selezionare un colore , 
+cambiare pagina e in pagina visualizzare una combo 
+box con preselezionato lo stesso colore della pagina 
+precedente e un quadrato il cui colore corrisponde 
+sempre al colore selezionato
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIAO</title>
+</head>
+<body>
+    <h1>ciao benvenuti nelle mia pagina :) </h1>
+    <button onclick="mostraDati()" 
+    onmouseover="changeColor(this)">Mostra Persona</button>
+    <button
+    onmouseover="changeColor2(this)">Mostra Persona</button>
+
+    <div>
+        <h1>Seleziona un Colore</h1>
+        <select id="colori">
+            <option value="red">Rosso</option>
+            <option value="green">Verde</option>
+            <option value="blue">Blu</option>
+            <option value="yellow">Giallo</option>
+            <option value="orange">Arancione</option>
+        </select>
+        <button onclick="cambiaPage()">Vai alla Pagina Successiva</button>
+    </div>
+
+    
+    
+
+
+    <script>
+        var persona=[
+    {
+        name: 'John',
+        surname: 'John',
+        age:23,
+        city:'Milano'
+    },
+    {
+        name: 'Alessio',
+        surname: 'Salzillo',
+        age:17,
+        city:'Vairano'
+    }
+]
+    console.log(persona)
+
+    function mostraDati(){
+        persona.forEach(elem => {
+            
+        
+        if(elem.age > 18){
+            console.log(elem.name+ ' ' + elem.surname +' '+ elem.age +' '+ elem.city);
+        }else{
+            console.log(elem.name.charAt(0)+ ' ' + elem.surname +' '+ elem.age);
+            
+        }
+    });
+    }
+
+    function changeColor(x){
+        x.style.backgroundColor = 'red';
+    }
+    function changeColor2(x){
+        x.style.backgroundColor = 'green';
+    }
+
+
+    function cambiaPage() {
+        var coloreSelezionato = document.getElementById("colori").value;
+        localStorage.setItem("colori", coloreSelezionato);
+        window.location.href = "index2.html";
+    }
+   
+
+    </script>
+</body>
+</html>

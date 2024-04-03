@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio3</title>
+</head>
+
+<body>
+    <form id="form1">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <button onclick="eseguiSubmit()">Submit</button><br>
+        <button onclick="redirect()" id="bottoneDellaStampa">Redirect</button>
+    </form>
+
+
+    <script>
+        function eseguiSubmit() {
+
+            event.preventDefault();
+            var nameI = document.getElementById('name').value;
+            var emailI = document.getElementById('email').value;
+            console.log(nameI, emailI);
+
+            var datiDelForm1 = {
+                name: nameI,
+                email: emailI
+            };
+
+            const conversioneDelJsonInStringa = JSON.stringify(datiDelForm1);
+
+            let obj = JSON.parse(conversioneDelJsonInStringa);
+            console.log(obj);
+
+            localStorage.setItem("JsonConv", conversioneDelJsonInStringa); 
+
+
+
+
+        }
+
+
+
+
+
+        function redirect() {
+            window.location.href = "GoToPage.html";
+            alert("Redirect!!");
+
+        };
+
+
+
+
+
+    </script>
+</body>
+
+</html>

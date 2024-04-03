@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JQuery</h1>
+    <h2>Introduzione a jquery</h2>
+    <div class="tab-container">
+      <ul class="tab-menu">
+        <li class="active" data-panel="panel1">
+          Titolo 1
+        </li>
+        <li data-panel="panel2">Titolo 2</li>
+        <li data-panel="panel3">Titolo 3</li>
+      </ul>
+
+      <div class="panel active" id="panel1">
+        <h3>Pannello 1</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+      <div class="panel" id="panel2">
+        <h3>Pannello 2</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+      <div class="panel" id="panel3">
+        <h3>Pannello 3</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+    </div>
+    <div>
+    <nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">First</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">Second</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
+        <h4 id="scrollspyHeading1">First heading</h4>
+        <p>...</p>
+        <h4 id="scrollspyHeading2">Second heading</h4>
+        <p>...</p>
+        <h4 id="scrollspyHeading3">Third heading</h4>
+        <p>...</p>
+        <h4 id="scrollspyHeading4">Fourth heading</h4>
+        <p>...</p>
+        <h4 id="scrollspyHeading5">Fifth heading</h4>
+        <p>...</p>
+      </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("li").on("click", function () {
+                var panelId = $(this).data('panel');
+                var activePanel = $('#' + panelId);
+
+                $(".tab-menu li").removeClass("active");
+                $(this).addClass("active");
+
+                $(".panel.active").slideUp("slow", function() {
+                  $(".panel.active").removeClass("active");
+                  activePanel.addClass("active").slideDown("slow");
+                });
+            });
+        });
+        
+    //   function openPannello(evt, panelId) {
+    //     var i, panels, panelHeaders;
+    //     panels = document.querySelectorAll(".panel");
+    //     panelHeaders = document.querySelectorAll(".tab-menu li");
+
+    //     for (i = 0; i < panels.length; i++) {
+    //       panels[i].classList.remove("active");
+    //       panelHeaders[i].classList.remove("active");
+    //     }
+
+    //     document.getElementById(panelId).classList.add("active");
+    //     evt.target.classList.add("active");
+    //   }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+
+            body {
+                font-family: arial;
+                padding: 40px;
+                margin: 0;
+                background: #19a2c9;
+                color: #fff;
+            }
+ 
+        a {
+            color: #fff210;
+                text-decoration: none;
+                display: inline-block;
+                width: 33%;
+                text-align: center
+            }
+ 
+            hr {
+                border: 0;
+                height: 1px;
+                background: #ccc;
+                margin-bottom: 40px;
+            }
+ 
+            .lined {
+                text-decoration: line-through;
+            }

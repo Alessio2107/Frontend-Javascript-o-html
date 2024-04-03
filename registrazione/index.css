@@ -38,13 +38,15 @@ body {
     transition: 0.3s;
     font-size: 16px;
     border-radius: 10px 10px 0 0;
-    /* display: none; */
+   /* display: none;  */
   }
 
   .tab button:hover {
     background-color: #ddd;
   }
-
+  #Registrazione{
+    display: block;
+  }
   .tabcontent {
     display: none;
     padding: 20px;
@@ -94,6 +96,32 @@ body {
         transform: scaleX(-1); /* Specchia l'icona lungo l'asse X */
     
   }
-  .tablinks{
-    /* display: none; */
-  }
+  /* .tablinks{
+     display: none; 
+  } */
+
+  
+  /* input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+ 
+input:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 0px;
+    height: 2px;
+    background: #a4243b;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s ease;
+}
+ 
+input:hover:before {
+    width: 100%;
+} */

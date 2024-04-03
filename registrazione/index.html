@@ -11,19 +11,20 @@
   </head>
   <body>
 
-    <h2>Accesso</h2>
-    <p>Registrati, Accedi e Salva</p>
+    <!-- <h2>Accesso</h2>
+    <p>Registrati, Accedi e Salva</p> -->
+
     <!-- <button style="align-items: center;justify-content: center; margin-left: 45%;
     background-color: rgb(47, 184, 184);"  onclick="openCity(event, 'Registrazione')">ENTRA NELLA PAGINA</button> -->
 
     <div class="tab" >
-        
-      <button class="tablinks" onclick="openCity(event, 'Registrazione')" style="background-color: bisque;">REGISTRAZIONE</button>
+      <!-- onclick="openCity(event, 'Registrazione')" -->
+      <button class="tablinks"  disable style="background-color: bisque;">REGISTRAZIONE</button>
       <button class="tablinks" id="loginTab" disabled style="background-color: rgb(244, 218, 239)">LOGIN</button>
       <button class="tablinks" id="riepilogoTab" disabled style="background-color: rgb(199, 216, 165)">RIEPILOGO</button>
     </div>
     
-    <div id="Registrazione" class="tabcontent" style="background-color: bisque">
+    <div id="Registrazione" class="tabcontent" style="background-color: bisque" >
       <h3>Registrazione</h3>
       <label for="nickname" id="nicknameLabel">Nickname:</label>
       <input type="text" id="nickname" />
