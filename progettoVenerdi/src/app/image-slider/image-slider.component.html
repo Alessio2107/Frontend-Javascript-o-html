@@ -1,6 +1,0 @@
-<mat-slider [(ngModel)]="selectedIndex" min="0" max="{{ images.length - 1 }}" thumbLabel></mat-slider>
-<div *ngIf="images.length > 0" class="slider">
-  <div *ngFor="let image of images; let i = index">
-    <img [src]="image" alt="Slider Image" *ngIf="i === selectedIndex">
-  </div>
-</div>
