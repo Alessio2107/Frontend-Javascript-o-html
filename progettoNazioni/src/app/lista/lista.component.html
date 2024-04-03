@@ -1,8 +1,0 @@
-
-<ul *ngIf="listaNazioni">
-    <li (click)="passaNome(l.name.common)"
-    [routerLink]="['/dettaglio', l.name.common]"
-    *ngFor="let l of listaNazioni">
-        {{l.name.common}}</li>
-
-</ul>
